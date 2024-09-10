@@ -6,7 +6,7 @@ pipeline {
         maven 'maven3'
     }
 
-    //stages {
+    stages {
         //stage('Git Checkout') {
           //  steps {
            //     git branch: 'prod', url: 'https://github.com/Raghava0684/Petclinic-project.git'

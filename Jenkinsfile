@@ -1,29 +1,30 @@
 pipeline {
-    agent any
+    agent {
+        label 'Slave-01'
+    }
     
-    tools {
-        jdk 'jdk17'
+    tools{
+        jdk 'java17'
         maven 'maven3'
     }
 
     stages {
-        //stage('Git Checkout') {
-          //  steps {
-           //     git branch: 'prod', url: 'https://github.com/Raghava0684/Petclinic-project.git'
-          //  }
-      //  }
-        
-        stage('Mvn compile') {
+        stage('Git CheckOut') {
             steps {
-                sh 'mvn compile'
+                git branch: 'prod', url: 'https://github.com/Raghava0684/Petclinic-project.git'
             }
         }
         
-        stage('Mvn package') {
+        stage('Compile') {
             steps {
-                sh 'mvn package'
+               sh "mvn clean compile"
             }
         }
-    
+        
+        stage('Clean Package') {
+            steps {
+                sh "mvn clean package -DskipTests=true"
+            }
+        }
     }
 }

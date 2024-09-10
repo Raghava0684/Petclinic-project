@@ -6,12 +6,12 @@ pipeline {
         maven 'maven3'
     }
 
-    stages {
-        stage('Git Checkout') {
-            steps {
-                git branch: 'prod', url: 'https://github.com/Raghava0684/Petclinic-project.git'
-            }
-        }
+    //stages {
+        //stage('Git Checkout') {
+          //  steps {
+           //     git branch: 'prod', url: 'https://github.com/Raghava0684/Petclinic-project.git'
+          //  }
+      //  }
         
         stage('Mvn compile') {
             steps {
